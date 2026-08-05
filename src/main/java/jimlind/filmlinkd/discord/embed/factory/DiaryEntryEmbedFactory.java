@@ -103,15 +103,11 @@ public class DiaryEntryEmbedFactory {
     return "%s %sed...".formatted(profileName, String.valueOf(entry.getType()));
   }
 
-  private static String escapeMarkdownChars(String input) {
-    return input.replaceAll("([*_~])", "\\\\$1");
-  }
-
   private String createEmbedTitle(Message.Entry entry) {
     String adult = entry.isAdult() ? ":underage: " : "";
     String year = entry.getFilmYear() != 0 ? "(" + entry.getFilmYear() + ")" : "";
 
-    return escapeMarkdownChars(adult + entry.getFilmTitle() + " " + year);
+    return adult + entry.getFilmTitle() + " " + year;
   }
 
   private String createReviewTitle(Message.Entry entry) {
